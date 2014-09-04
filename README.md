@@ -5,7 +5,7 @@ A .py library which offers the quickest and the most convenient way to use diver
 
 Usage:
 --------------------------------
-Using mpdl [screenshot service][1](eg.) by doing
+Using mpdl screenshot service(eg.) by doing
 ```
 screenshot = ScreenshotService()
 ScreenshotService.captureFromURL("serviceTargetURL", "url", "outputFormat", "outputSize", "crop")
