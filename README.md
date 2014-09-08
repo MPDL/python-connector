@@ -50,7 +50,15 @@ Details
  **All parameters are Strings!**
 
  **All methods return temporary files**
-    
+ 
+ Command line
+----------------------------------
+The above described services can also be used as command line tools. Just add the folder with the .py files to your PATH variable and type the name of one of the services. Use the --mode argument to choose a method:
+
+```
+(e.g) ScreenshotService --mode captureFromeURL
+```
+To see the various argument options for each service type in the name of the service and --help.
 
 [1]: http://vm15.mpdl.mpg.de
 [2]: https://github.com/MPDL/swc-service
