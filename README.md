@@ -8,6 +8,8 @@ A .py library which offers the quickest and the most convenient way to use diver
   *  SWC Analysis Service
 * [Screenshot Service][3]
 * [Media conversion Service][4]
+* [Data Viewer Service][5]
+* [FITS Service][6]
 
 Installation:
 --------------------------------
@@ -38,13 +40,21 @@ Details
     * getAnalysisFromString(self, serviceTargetURL, inputString, numberOfBins="10")
     * getAnalysisFromURL(self, serviceTargetURL, inputURL, numberOfBins="10")
 * **Screenshot Service** (ScreenshotService.py)
-    * Methods
-      * captureFromURL (self, serviceTargetURL, inputURL, outputFormat, outputSize, crop)
-      * captureFromHTML(self, serviceTargetURL, inputHTML, outputFormat, outputSize, crop)
+  * Methods
+    * captureFromURL (self, serviceTargetURL, inputURL, outputFormat, outputSize, crop)
+    * captureFromHTML(self, serviceTargetURL, inputHTML, outputFormat, outputSize, crop)
 * **Media conversion Service** (MediaConversionService.py)
   * Methods
     * convertFromFile(self, serviceTargetURL, mediaFile, outputFormat, outputSize, crop)
     * convertFromURL(self, serviceTargetURL, mediaURL, outputFormat, outputSize, crop)
+* **Data Viewer Service** (DataViewerService.py)
+  * Methods
+    * generateFromFile(self, serviceTargetURL, inputFile, mimetype)
+    * generateFromURL(self, serviceTargetURL, inputURL, mimetype)
+* **FITS Service** (FITSService.py)
+  * Methods
+    * generateFromFile(self, serviceTargetURL, inputFile)
+    * generateFromURL(self, serviceTargetURL, inputURL)
 
  
  **All parameters are Strings!**
@@ -64,4 +74,5 @@ To see the various argument options for each service type in the name of the ser
 [2]: https://github.com/MPDL/swc-service
 [3]: https://github.com/MPDL/screenshot-service
 [4]: https://github.com/MPDL/media-conversion-service
-
+[5]: https://github.com/MPDL/data-viewer-service
+[6]: https://github.com/MPDL/fits-service
