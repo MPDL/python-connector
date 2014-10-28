@@ -18,6 +18,14 @@ class RestClient:
         connection.close()
         return f
 
+    def doPost3(self, connURL, params, requestFile, respFile):
+        files = {"file": open(requestFile, 'rb+')}
+        r = requests.post(connURL, data=params, files=files)
+        print r.content
+        respFile.write(r.content)
+        respFile.seek(0)
+        return respFile
+
     def doPost2(self, connURL, requestFile, respFile):
         files = {"file": open(requestFile, 'rb+')}
         r = requests.post(connURL, files=files)

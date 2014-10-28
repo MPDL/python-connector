@@ -14,30 +14,18 @@ class FITSService(RestClient):
     def generateFromFile(self, serviceTargetURL, f):
         if(serviceTargetURL == ""):
             serviceTargetURL = self.serviceTargetURL
-        files = {"file": open(f, 'rb+')}
-        r = requests.post(serviceTargetURL, files=files)
-        text = r.content
-
-        #write response to tempfile
-        #respFile = tempfile.TemporaryFile('rb+')
-        #respFile.write(r.content)
-        #respFile.seek(0)
-
-    #matching to find out the url of the temp file
-        matchobj = re.search("JS9.Preload\(.*\"", text)
-        preloadstring = matchobj.group()
-        index = preloadstring.find("http")
-        file_url = preloadstring[index: -1]
-
-        self.generateFromURL("", file_url)
-        #return respFile
+        respFile = tempfile.TemporaryFile('rb+')
+        self.doPost2(serviceTargetURL, f, respFile)
+        return respFile
 
 
     def generateFromURL(self, serviceTargetURL, url):
         if(serviceTargetURL == ""):
             serviceTargetURL = self.serviceTargetURL
+        respFile = tempfile.TemporaryFile('rb+')
         url = urllib.quote(url, '') # url encoding
-        webbrowser.open(serviceTargetURL + "?url=%s" %(url), new=0, autoraise=True)
+        self.doGet(serviceTargetURL + "?url=%s" %(url), respFile)
+        return respFile
 
     def cmd(self):
        p = optparse.OptionParser()
@@ -66,10 +54,3 @@ class FITSService(RestClient):
 if __name__ == '__main__':
     test = FITSService()
     test.cmd()
-    #datei = test.generateFromFile("", "C:/Users/schudan/Desktop/n49_0.5-7.0_flux.fits")
-    #datei = test.generateFromURL("", "http://servicehub.mpdl.mpg.de/fits/api/file?file=%2Fopt%2Fapache-tomcat-7.0.55%2Ftemp%2Ffits8414614013714827600.fits")
-
-    #not working yet, CORS needed
-    #output = file('C:/Users/schudan/Desktop/test90.html', 'wb+')
-    #output.write(datei.read())
-    #output.close()
